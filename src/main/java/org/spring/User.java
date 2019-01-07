@@ -3,18 +3,27 @@ package org.spring;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class User {
 
-    @NotNull
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
-    @NotNull
-    @Size(min=1, max=20)
+    @Size(min=1, max=50)
     private String name;
 
-    public User(Integer id, String name) {
-        this.id = id;
+    @Size(max=250)
+    private String email;
+
+    public User(String name, String email) {
         this.name = name;
+        this.email = email;
     }
 
     public Integer getId() {
@@ -31,5 +40,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
