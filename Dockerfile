@@ -1,9 +1,11 @@
-FROM openjdk:8-jdk-alpine
+FROM maven:alpine
 
 WORKDIR /app
 
-COPY target/*.jar /app
+COPY . /app
+
+RUN mvn package
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "spring-blog-0.1.jar"]
+CMD ["java", "-jar", "target/spring-blog-0.1.jar"]
