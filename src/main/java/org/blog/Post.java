@@ -49,4 +49,5 @@ public class Post {
     public String getWriter() {
         return writer;
     }
+
 }
