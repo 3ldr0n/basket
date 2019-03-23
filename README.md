@@ -1,3 +1,3 @@
 # Basket
 
-Simple blog application
+Simple file sharing application.
