@@ -10,9 +10,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class BasketApplicationTests {
 
-	@Test
-	public void contextLoads() {
-		assertThat(0).isEqualTo(0);
-	}
+    @Test
+    public void contextLoads() {
+        assertThat(0).isEqualTo(0);
+    }
 
 }
