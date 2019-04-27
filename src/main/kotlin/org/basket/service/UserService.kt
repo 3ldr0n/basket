@@ -16,8 +16,8 @@ class UserService {
         val users = userRepository.findAll()
         val usersVO = ArrayList<UserVO?>()
 
-        for (user : UserEntity in users) {
-            usersVO.add(user.mapToVo())
+        users.forEach {
+            usersVO.add(it.mapToVo())
         }
 
         return usersVO
