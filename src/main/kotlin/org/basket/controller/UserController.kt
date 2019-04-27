@@ -1,8 +1,10 @@
 package org.basket.controller
 
-import org.basket.entity.UserEntity
-import org.basket.repository.UserRepository
+import org.basket.response.BaseResponse
+import org.basket.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -12,16 +14,23 @@ import org.springframework.web.bind.annotation.RestController
 class UserController {
 
     @Autowired
-    lateinit var userRepository : UserRepository;
+    lateinit var userService: UserService
 
     @GetMapping("/users")
-    fun getUsers() : List<UserEntity> {
-        return userRepository.findAll()
+    fun getUsers() : ResponseEntity<BaseResponse> {
+        val users = userService.getUsers()
+        val response = BaseResponse("ok")
+        response.setData(users)
+
+        return ResponseEntity.status(HttpStatus.OK).body(response)
     }
 
     @PostMapping("/user")
-    fun createUser(@RequestParam name : String) : String {
-        userRepository.save(UserEntity(null, name))
-        return "User created"
+    fun createUser(@RequestParam name : String) : ResponseEntity<BaseResponse> {
+        val userData = userService.createUser(name)
+        val response = BaseResponse("created")
+        response.setData(userData)
+
+        return ResponseEntity.status(HttpStatus.OK).body(response)
     }
 }

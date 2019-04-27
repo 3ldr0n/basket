@@ -1,5 +1,6 @@
 package org.basket.entity
 
+import org.basket.vo.UserVO
 import javax.persistence.Entity
 import javax.persistence.Table
 import javax.persistence.Id
@@ -14,9 +15,18 @@ data class UserEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BASKET_USER_ID")
-    var id: Long? = null,
+    private val id: Long,
 
     @Column(name = "BASKET_USER_NAME")
-    var name: String? = null
+    private val name: String
 
-)
+) {
+
+    fun getId() : Long {
+        return id
+    }
+
+    fun mapToVo() : UserVO {
+        return UserVO(name)
+    }
+}
