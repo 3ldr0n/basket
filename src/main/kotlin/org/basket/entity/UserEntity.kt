@@ -33,7 +33,7 @@ data class UserEntity(
         cascade = [CascadeType.ALL]
     )
     @JsonIgnore
-    val files: List<FileEntity> = emptyList()
+    val uploadedFiles: List<FileEntity> = emptyList()
 
 
     fun mapToVo() : UserVO {
