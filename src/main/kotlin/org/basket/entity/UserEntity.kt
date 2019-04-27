@@ -1,12 +1,15 @@
 package org.basket.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.basket.vo.UserVO
+import javax.persistence.CascadeType
+import javax.persistence.Column
 import javax.persistence.Entity
-import javax.persistence.Table
-import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
-import javax.persistence.Column
+import javax.persistence.Id
+import javax.persistence.OneToMany
+import javax.persistence.Table
 
 @Entity
 @Table(name = "user")
@@ -24,6 +27,14 @@ data class UserEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     val id: Long = 0
+
+    @OneToMany(
+        mappedBy = "uploader",
+        cascade = [CascadeType.ALL]
+    )
+    @JsonIgnore
+    val files: List<FileEntity> = emptyList()
+
 
     fun mapToVo() : UserVO {
         return UserVO(name, email, password)
