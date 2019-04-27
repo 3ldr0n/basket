@@ -15,16 +15,12 @@ data class UserEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BASKET_USER_ID")
-    private val id: Long,
+    val id: Long,
 
     @Column(name = "BASKET_USER_NAME")
-    private val name: String
+    val name: String
 
 ) {
-
-    fun getId() : Long {
-        return id
-    }
 
     fun mapToVo() : UserVO {
         return UserVO(name)

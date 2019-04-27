@@ -20,7 +20,7 @@ class UserController {
     fun getUsers() : ResponseEntity<BaseResponse> {
         val users = userService.getUsers()
         val response = BaseResponse("ok")
-        response.setData(users)
+        response.data = users
 
         return ResponseEntity.status(HttpStatus.OK).body(response)
     }
@@ -29,7 +29,7 @@ class UserController {
     fun createUser(@RequestParam name : String) : ResponseEntity<BaseResponse> {
         val userData = userService.createUser(name)
         val response = BaseResponse("created")
-        response.setData(userData)
+        response.data = userData
 
         return ResponseEntity.status(HttpStatus.OK).body(response)
     }

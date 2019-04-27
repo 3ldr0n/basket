@@ -28,7 +28,7 @@ class UserService {
         userRepository.save(user)
 
         val response = HashMap<String, Long>()
-        response["userId"] = user.getId()
+        response["userId"] = user.id
 
         return response
     }
