@@ -24,7 +24,7 @@ class UserService {
     }
 
     fun createUser(name : String) : Map<String, Long> {
-        val user = UserEntity(0, name)
+        val user = UserEntity(name)
         userRepository.save(user)
 
         val response = HashMap<String, Long>()
