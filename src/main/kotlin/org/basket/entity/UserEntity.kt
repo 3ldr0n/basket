@@ -9,17 +9,23 @@ import javax.persistence.GenerationType
 import javax.persistence.Column
 
 @Entity
-@Table(name = "BASKET_USER")
+@Table(name = "user")
 data class UserEntity(
-    @Column(name = "BASKET_USER_NAME")
-    val name: String
+    @Column(name = "name")
+    val name: String,
+
+    @Column(name = "email")
+    val email: String,
+
+    @Column(name = "password")
+    val password: String
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BASKET_USER_ID")
+    @Column(name = "user_id")
     val id: Long = 0
 
     fun mapToVo() : UserVO {
-        return UserVO(name)
+        return UserVO(name, email, password)
     }
 }

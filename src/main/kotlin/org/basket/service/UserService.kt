@@ -23,8 +23,8 @@ class UserService {
         return usersVO
     }
 
-    fun createUser(name : String) : Map<String, Long> {
-        val user = UserEntity(name)
+    fun createUser(name : String, email : String, password : String) : Map<String, Long> {
+        val user = UserEntity(name, email, password)
         userRepository.save(user)
 
         val response = HashMap<String, Long>()

@@ -26,8 +26,10 @@ class UserController {
     }
 
     @PostMapping("/user")
-    fun createUser(@RequestParam name : String) : ResponseEntity<BaseResponse> {
-        val userData = userService.createUser(name)
+    fun createUser(@RequestParam name : String,
+                   @RequestParam email : String,
+                   @RequestParam password : String) : ResponseEntity<BaseResponse> {
+        val userData = userService.createUser(name, email, password)
         val response = BaseResponse("created")
         response.data = userData
 
