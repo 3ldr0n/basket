@@ -35,7 +35,6 @@ data class UserEntity(
     @JsonIgnore
     val uploadedFiles: List<FileEntity> = emptyList()
 
-
     fun mapToVo() : UserVO {
         return UserVO(name, email, password)
     }
