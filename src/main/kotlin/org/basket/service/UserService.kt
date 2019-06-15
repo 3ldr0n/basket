@@ -4,7 +4,6 @@ import mu.KotlinLogging
 import org.basket.entity.UserEntity
 import org.basket.repository.UserRepository
 import org.basket.vo.UserVO
-import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
